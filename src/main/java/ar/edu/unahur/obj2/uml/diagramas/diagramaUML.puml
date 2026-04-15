@@ -1,0 +1,26 @@
+@startuml
+class "Usuario"{
+    -nombr: String
+    +getNombre(): String
+    +alquilar(Vehiculo vehiculo): void
+} 
+
+class "Vehiculo"{
+    -disoponible: Boolean
+    +isDisponible(): Boolean
+}
+
+class "Bicicleta"{
+    -rodado: Integer
+    +getRodado(): Integer
+}
+
+class "Monopatin"{
+    -marca: String
+    +getmarca(): String
+}
+
+Bicicleta --|> Vehiculo
+Monopatin --|> Vehiculo
+
+@enduml
