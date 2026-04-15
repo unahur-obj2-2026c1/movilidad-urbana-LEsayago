@@ -1,0 +1,53 @@
+@startuml
+class "Usuario"{
+    -nombr: String
+    +getNombre(): String
+    +alquilar(Vehiculo vehiculo): void
+} 
+
+abstract class "Vehiculo"{
+    -disoponible: Boolean
+    +isDisponible(): Boolean
+    +ocupar(): void
+    +liberar(): void
+}
+
+class "Bicicleta"{
+    -rodado: Integer
+    +getRodado(): Integer
+}
+
+class "Monopatin"{
+    -marca: String
+    +getmarca(): String
+}
+
+Bicicleta --|> Vehiculo
+Monopatin --|> Vehiculo
+
+class "Alquiler"{
+-fechaInicio: Date
+  -fechaFin: Date
+  -usuario: Usuario
+  -vehiculo: Vehiculo
+
+  +finalizar(fechaFin: Date): void
+}
+
+class SistemaAlquiler {
+  -usuarios: List<Usuario>
+  -vehiculos: List<Vehiculo>
+  -alquileres: List<Alquiler>
+
+  +alquilar(usuario: Usuario, vehiculo: Vehiculo): Alquiler
+  +vehiculosDisponibles(): List<Vehiculo>
+  +alquileresDe(usuario: Usuario): List<Alquiler>
+}
+Usuario "1" -- "0..*" Alquiler
+Vehiculo "1" -- "0..*" Alquiler
+
+SistemaAlquiler "1" -- "0..*" Usuario
+SistemaAlquiler "1" -- "0..*" Vehiculo
+SistemaAlquiler "1" -- "0..*" Alquiler
+
+@enduml
