@@ -2,7 +2,6 @@
 class "Usuario"{
     -nombr: String
     +getNombre(): String
-    +alquilar(Vehiculo vehiculo): void
 } 
 
 abstract class "Vehiculo"{
